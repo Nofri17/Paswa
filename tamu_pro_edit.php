@@ -5,10 +5,11 @@ if(!isset($_SESSION['valid'])) {
 
 include_once("connection.php");
 $id = $_POST['id'];
-$nama_kelompok = $_POST['nama_kelompok'];
+$nama_tamu = $_POST['nama_tamu'];
+$jabatan = $_POST['jabatan'];
 	
-$result = mysqli_query($mysqli, "UPDATE tab_kelompok SET nama_kelompok='$nama_kelompok' WHERE id='$id' ");   
+$result = mysqli_query($mysqli, "UPDATE tab_tamu SET nama_tamu='$nama_tamu', jabatan='$jabatan' WHERE id='$id' ");   
 echo "<script language=javascript>
 			alert('Perbaikan Berhasil');
-			window.location='kelompok.php';
+			window.location='tamu.php';
 			</script>";

@@ -19,7 +19,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="dashboard.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -55,7 +55,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="peserta_kelompok.php">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Data Peserta - Kelompk</span></a>
+                    <span>Data Peserta - Kelompok</span>
+                </a>
             </li>           
 
         </ul>

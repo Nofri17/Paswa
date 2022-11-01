@@ -6,14 +6,14 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Data Kelompok</h1>
+    <h1 class="h3 mb-2 text-gray-800">Data Peserta - Kelompok</h1>
     <p class="mb-4"> </p>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             
-            <a href="kelompok_add.php" class="btn btn-primary">Tambah</a>
+           
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -22,7 +22,7 @@
                         <tr>
                             <td>No.</td>
                             <td>Nama Kelompok</td>
-                            <td>Action</td>
+                            <td>Nama Peserta</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,13 +31,24 @@
                         $no = 0;
                         $result = mysqli_query($mysqli, "SELECT * FROM tab_kelompok");
                         while ($row = mysqli_fetch_array($result)) {
+                            $id_kelompok = $row['id'];
                             $no++;
                             echo "<tr>";
                             echo "<td>" . $no . "</td>";
                             echo "<td>" . $row['nama_kelompok'] . "</td>";
-                            echo "<td><a href=\"kelompok_edit.php?id=$row[id]\">Edit</a> | 
-                        <a href=\"kelompok_pro_delete.php?id=$row[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
-                            echo "</tr>";
+                        
+                            $result_peserta = mysqli_query($mysqli, "select b.nama from tab_peserta_kelompok as a left join tab_peserta as b on a.nim = b.nim where a.id_kelompok = '$id_kelompok' ");
+                            $rowx = mysqli_fetch_assoc($result_peserta);
+                            if(!empty($rowx)){
+                                echo "<td>";
+                                $peserta = mysqli_query($mysqli, "select b.nama from tab_peserta_kelompok as a left join tab_peserta as b on a.nim = b.nim where a.id_kelompok = '$id_kelompok' ");
+                                while ($pesertax =  mysqli_fetch_array($peserta)){                                   
+                                    echo "<li>".$pesertax['nama']."</li><br>";                                    
+                                }
+                                echo "</td>";
+                            }else{
+                                echo "<td><a href='set_kelompok.php?id=$id_kelompok' class='btn btn-info'>Set Kelompok</a> </td>";
+                            }
                         }
                         ?>
                     </tbody>

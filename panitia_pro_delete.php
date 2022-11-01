@@ -4,10 +4,10 @@ if(!isset($_SESSION['valid'])) {
 }
 
 include_once("connection.php");
-$id = $_GET['id'];
+$nim = $_GET['nim'];
 	
-$result=mysqli_query($mysqli, "DELETE FROM tab_kelompok WHERE id= '$id' ");
+$result=mysqli_query($mysqli, "DELETE FROM tab_panitia WHERE nim= '$nim' ");
 echo "<script language=javascript>
 			alert('Hapus Berhasil');
-			window.location='kelompok.php';
+			window.location='panitia.php';
 			</script>";

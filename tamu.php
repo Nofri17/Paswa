@@ -6,14 +6,14 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Data Kelompok</h1>
+    <h1 class="h3 mb-2 text-gray-800">Data Tamu</h1>
     <p class="mb-4"> </p>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             
-            <a href="kelompok_add.php" class="btn btn-primary">Tambah</a>
+            <a href="tamu_add.php" class="btn btn-primary">Tambah</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -21,7 +21,8 @@
                     <thead>
                         <tr>
                             <td>No.</td>
-                            <td>Nama Kelompok</td>
+                            <td>Nama Tamu</td>
+                            <td>Jabatan</td>
                             <td>Action</td>
                         </tr>
                     </thead>
@@ -29,14 +30,15 @@
                         <?php
                         include_once("connection.php");
                         $no = 0;
-                        $result = mysqli_query($mysqli, "SELECT * FROM tab_kelompok");
+                        $result = mysqli_query($mysqli, "SELECT * FROM tab_tamu");
                         while ($row = mysqli_fetch_array($result)) {
                             $no++;
                             echo "<tr>";
                             echo "<td>" . $no . "</td>";
-                            echo "<td>" . $row['nama_kelompok'] . "</td>";
-                            echo "<td><a href=\"kelompok_edit.php?id=$row[id]\">Edit</a> | 
-                        <a href=\"kelompok_pro_delete.php?id=$row[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
+                            echo "<td>" . $row['nama_tamu'] . "</td>";
+                            echo "<td>" . $row['jabatan'] . "</td>";
+                            echo "<td><a href=\"tamu_edit.php?id=$row[id]\">Edit</a> | 
+                        <a href=\"tamu_pro_delete.php?id=$row[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
                             echo "</tr>";
                         }
                         ?>
